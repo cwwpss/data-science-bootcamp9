@@ -10,7 +10,6 @@ data("mpg")
 glimpse(mpg)
 
 # chart 1 compare type of car in each year 1999 and 2008
-## เหลือแบ่งปีแล้ว create chart
 mpg %>%
   group_by(class) %>%
   summarize(total_car = n()) %>%
