@@ -1,4 +1,4 @@
-# Machine learning with R programming
+# Machine learning with R programming - 01
 # 3 step to build ML
 ## 1. Prepare data
 ## 2. Train algorithm
