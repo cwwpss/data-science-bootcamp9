@@ -283,4 +283,151 @@ del customer01["name"]
 customer01
 
 ## .get()
-customer01.get("name")
+customer01.get("name") # เมื่อมันเจอ error จะไม่ return อะไรกลับมาเลย
+
+# set 
+## set in python is unique
+numbers = [1,1,2,3,4,5,5,6,9,9] # define list
+
+set(numbers) # change to set -> จะไม่มีค่าซ้ำเลย -> delete duplicate
+# Example 
+package = ["post", "pre", "pre", "terminate"]
+set(package)
+
+# combine to 2 set
+set_a = {"banana", "apple"}
+set_b = {"banana", "orange"}
+# use union
+set_a | set_b
+
+# intersect
+set_a & set_b
+
+# Control flow 
+# if else
+score = 88
+# use print()
+if score >= 80:
+  print("A")
+elif score >= 70:
+  print("B")
+elif score >= 60:
+  print("C")
+else:
+  print("failed")
+# if else function
+def grading(score):
+  if score >= 80:
+    return "A"
+  elif score >= 70:
+    return "B"
+  elif score >= 60:
+    return "C"
+  else:
+    return "failed"
+grade = grading(85)
+print(grade)
+
+score = 85
+# 1 line shortest time but sometimes hard to understand
+print("passed") if score >= 80 else print("failed")
+
+# muti line have readability
+if score >= 80:
+  print("passed")
+else:
+  print("failed")
+
+# for loop
+artists = ["Taylor Swift",
+           "Spice Girls",
+           "Backstreet Boys"]
+for artist in artists:
+  first_name = artist.split(" ")[0].upper() # ใช้ split ตัดคำเอาแค่ก่อน white space ด้วย index ที่ 0 และเปลี่ยนเป็น upper
+  if first_name == "TAYLOR":
+    print("Greeeed")
+  else:
+    print(first_name)
+
+artists = ["Taylor Swift",
+           "Spice Girls",
+           "Backstreet Boys"]
+
+# list comprehension
+upper_artists = [artist.upper() for artist in artists]
+
+print(upper_artists)
+
+# cost of program: time
+nums = list(range(1, 11)) # n-1
+print(nums)
+
+def sum_manual(nums):
+  result = 0
+  for num in nums:
+    result += num # = result + num
+  return result
+
+sum_manual(nums)
+
+def sum_shortcut(nums):
+  return (nums[0] + nums[-1]) * nums[-1] / 2
+
+sum_shortcut(nums)
+
+# while loop
+n = 1 # counter
+while n < 5:
+  print("hi!")
+  n = n + 1
+# While with def() :
+def game():
+  print("This is a test game!")
+  while True:
+    user_input = input("Do you want to continue or stop? ")
+    if user_input == "stop":
+      print("Game stop!")
+      break
+    else:
+      print("Let's continue.")
+
+# OOP: Object Oriented Programming
+class Books:
+  def __init__(self, name, year, author): # __init__ initialize กำลังจะสร้าง # self จะ refer ตัวมันเอง
+    self.name = name
+    self.year = year
+    self.author = author
+
+book1 = Books("Think like a freak", 2010, "Dubner")
+book2 = Books("Business Made Simple", 2018, "Donald Miller")
+book3 = Books("Data Science for Business", 2015, "Wiley")
+
+# dot notation
+book1.name
+
+book3.author
+
+## OOP = Object Oriented Programming เขียนโค้ดเพื่อให้ Python รู้จัก object นั้นๆ
+# class Dog
+
+class Dog:
+  def __init__(self, name, age, specie):
+    self.name = name
+    self.age = age
+    self.specie = specie
+
+  def sitting(self):
+    print("I'm sitting on the bed")
+
+  def get_older(self, year):
+    self.age += year
+    print(f"I'm getting older {year} year")
+
+dog1 = Dog("andy", 3, "chihuahua")
+print(dog1.name, dog1.age, dog1.specie)
+
+dog1.sitting()
+
+dog1.get_older(2)
+print(dog1.age)
+ 
