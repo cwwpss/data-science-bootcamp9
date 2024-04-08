@@ -12,7 +12,7 @@ data("airlines")
 # pre-view data
 glimpse(flights)
 
-# Q.1 the most arrival destination.
+# Q.1 The most popular arrival destination
 flights %>%
   left_join(
     airports, 
@@ -23,7 +23,7 @@ flights %>%
   arrange(desc(number_dest)) %>%
   head(1)
 
-# Q.2 destination that spent the most of amount time.
+# Q.2 The destination where we spent the most time
 flights %>%
   left_join(
     airports, 
@@ -39,7 +39,7 @@ flights %>%
     arrange(desc(air_time)) %>%
   head(1)
 
-# Q.3 top 10 departure delayed in 2nd month of 2013
+# Q.3 Top 10 most delayed departures in February 2013
 flights %>%
   filter(month == 2) %>%
   left_join(airlines, by = c("carrier")) %>%
@@ -48,7 +48,7 @@ flights %>%
   arrange(desc(dep_delay)) %>%
   head(10)
   
-# Q.4 top 10 time that fly in NOV and DEC of 2013
+# Q.4 Top 10 flights with the most delays during November and December of 2013
 flights %>%
   select(time_hour) %>%
   mutate(
@@ -62,7 +62,7 @@ flights %>%
   summarise(count_time = n()) %>%
   head(10)
 
-# Q.5 top 5 arrival to destination 
+# Q.5 Top 5 flight routes
 flights %>%
   left_join(
     airports, 
