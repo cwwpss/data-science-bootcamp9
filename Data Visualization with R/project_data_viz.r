@@ -9,9 +9,9 @@ data("mpg")
 ## Explore data
 glimpse(mpg)
 
-# chart 1 compare type of car in each year 1999 and 2008
+# Compare car types based on data from 1999 and 2008.
 mpg %>%
-  group_by(class) %>%
+  group_by(class, year) %>%
   summarize(total_car = n()) %>%
   ggplot(data = ., aes(x = reorder(class, -total_car), y = total_car, fill = -total_car)) +
     geom_col() +
@@ -20,14 +20,10 @@ mpg %>%
       title = "Total Car in Each Class",
       x = "class",
       y = "Vehicle count"
-      )
+      ) + 
+  facet_wrap(~year, ncol = 2)
 
-mpg %>%
-  ggplot(aes(fct_infreq(class), fill = class)) +
-  geom_bar(alpha = 0.8) +
-  scale_color_brewer("Set2")
-
-# Chart 2 trend between engine displacement and city&highway mpg
+# Chart 2 Explore the relationship between engine size (displacement) and fuel economy (city and highway MPG).
 c1 <- mpg %>%
   ggplot(aes(displ, hwy)) +
   geom_point() +
@@ -46,13 +42,13 @@ c2 <- mpg %>%
 
 c1 + c2
 
-# Chart 3 Compare total car for each manufacturing
+# Chart 3 Compare the total number of cars produced by each manufacturer.
 ggplot(mpg, mapping = aes(fct_rev(fct_infreq(manufacturer)))) +
   geom_bar() +
   coord_flip() +
   theme_minimal()
 
-# Chart 4 distribution regrad to the fl and mile per gallon
+# Chart 4 Distribution of cars according to fl and miles per gallon (MPG)
 cty_data <- mpg %>%
   select(fl, cty)
 
@@ -82,11 +78,14 @@ histrogram_hwy <- hwy_data %>%
 a1 <- ((boxplot_cty + boxplot_hwy) / (histrogram_cty + histrogram_hwy))
 a1
 
-# Chart 5 the transmission and drv in each manafacturer in 1999 and 2008
-mpg_2008 <- mpg %>%
+# Chart 5 Compare transmission data and drivetrain data for five manufacturers in 1999 and 2008.
+mpg_top5_data <- mpg %>%
+  filter(manufacturer %in% c("dodge", "toyota", "volkswagen", "ford", "chevrolet"))
+
+mpg_2008 <- mpg_top5_data %>%
   filter(year == 2008)
 
-mpg_1999<- mpg %>%
+mpg_1999<- mpg_top5_data %>%
   filter(year == 1999)
 
 trans_2008 <- mpg_2008 %>%
