@@ -109,14 +109,14 @@ INSERT INTO orders VALUES
 (19, 10, 6, 1, 1, 1, '2024-03-01'),
 (20, 6, 8, 3, 3, 2, '2024-03-02');
 
--- create our data
+-- View data
 SELECT * FROM customers;
 SELECT * FROM menus;
 SELECT * FROM orders;
 SELECT * FROM payments;
 SELECT * FROM staffs;
 
---  Find the qty sell in each month
+--  Find the total quantity sold in each month.
 SELECT
   STRFTIME('%Y-%m', orders_date) AS orders_date,
   SUM(orders_qty) as total_sell
