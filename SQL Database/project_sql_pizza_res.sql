@@ -53,13 +53,14 @@ CREATE TABLE payments (
   methods TEXT
 );
 
+-- Insert payments method data
 INSERT INTO payments VALUES
 (1, 'Cash'),
 (2, 'Mobile Banking'),
 (3, 'Credit Card'),
 (4, 'TrueMoney');
 
--- create staff table
+-- Create staff table
 CREATE TABLE staffs(
   staffs_id INT PRIMARY KEY,
   first_name TEXT,
@@ -67,6 +68,7 @@ CREATE TABLE staffs(
   gender TEXT
 );
 
+-- Insert staff data
 INSERT INTO staffs VALUES
 (1, 'Sarah', 'Jones', 'Female'),
 (2, 'Michael', 'Brown', 'Male'),
@@ -84,6 +86,7 @@ CREATE TABLE orders (
   orders_date TEXT
 );
 
+-- Insert order data
 INSERT INTO orders VALUES
 (1, 3, 2, 2, 1, 2, '2023-12-09'),
 (2, 5, 5, 3, 3, 1, '2023-12-12'),
@@ -132,7 +135,7 @@ GROUP BY menus_name
 ORDER BY sum(orders_qty) DESC
 LIMIT 1;
 
--- Find total sell in each menus
+-- Find the total sales in each menu.
 SELECT 
  menus_name, 
  ROUND(sum(orders_qty*menus_price), 2) AS total_revenue
@@ -142,7 +145,7 @@ JOIN menus as me
 GROUP BY menus_name
 ORDER BY sum(orders_qty*menus_price) DESC;
 
--- sub_query find the most hard worker staff in 2024-01
+-- Sub query: Find the most hard worker staff in Jan 2024
 SELECT
 first_name,
 SUM(orders_qty)
