@@ -87,10 +87,10 @@ library(tidyverse)
 # connect SQL sever
 con <- dbConnect(
   PostgreSQL(),
-  host = "arjuna.db.elephantsql.com",
-  dbname = "qvuviyss",
-  user = "qvuviyss",
-  password = "g3fC5VuLRNxp8iKhTiKsloVFXhq8A7vX",
+  host = ,
+  dbname = ,
+  user = ,
+  password = ,
   port = 5432
 )
 
